@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "609291416333",
+    "project_id": "fitsphere-5d473",
+    "storage_bucket": "fitsphere-5d473.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609291416333:android:5259905730659831453644",
+        "android_client_info": {
+          "package_name": "com.example.fitsphere"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4yPdFk7H7moCUu-rOHUYEXfNjsW4b9K0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

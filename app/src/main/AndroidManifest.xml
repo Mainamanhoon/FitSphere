@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,15 +17,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitSphere"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".screen.login_activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.signup_activity.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.workout_activity.WorkoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.main_activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.intro_activity.IntroActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>

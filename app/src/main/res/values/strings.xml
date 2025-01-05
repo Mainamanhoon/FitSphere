@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FitSphere</string>
+    <string name="LoginText">Already have an account? <font color="#FD511E">Signin</font></string>
+    <string name="introText">Welcome to FitLife, your ultimate workout planner! FitLife helps you plan tailored routines, track your progress, and stay consistent on your fitness journey. Let\'s get started and turn your goals into achievements!</string>
+    <string name="welcome_back">Welcome back</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dont_have_an_account">Don\'t have an account? <b><u>SignUp</u></b></string>
+
 </resources>

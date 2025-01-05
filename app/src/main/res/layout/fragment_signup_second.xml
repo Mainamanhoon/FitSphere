@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".screen.signup_activity.SignupSecond"
+    android:background="@drawable/bg_blue" >
+
+
+
+
+
+ <TextView
+    android:id="@+id/tv_subtitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="8dp"
+    android:text="Create strong password"
+    android:textSize="16sp"
+    android:textColor="@color/offWhite" />
+
+<!-- Password Input Fields -->
+<LinearLayout
+    android:id="@+id/form_container_1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+     android:layout_marginTop="24dp"
+    android:orientation="vertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tv_subtitle"
+    android:padding="8dp">
+
+
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:passwordToggleEnabled="true"
+    android:layout_marginBottom="16dp">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_create_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:textColorHint="@color/offWhite"
+        android:hint="Create password"
+        android:inputType="textPassword" />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Confirm password"
+            android:textColor="@color/white"
+            android:textColorHint="@color/offWhite"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>
+
+     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/form_container_1"
+         android:layout_marginTop="24dp"
+        android:background="@drawable/bg_orange"
+        android:text="Signup"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

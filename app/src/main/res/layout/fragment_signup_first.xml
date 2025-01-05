@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screen.signup_activity.SignupFirst"
+        android:background="@drawable/bg_blue">
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Fill your information below."
+            android:textColor="@color/white"
+             android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/form_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_subtitle"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/et_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/offWhite"/>
+
+            <EditText
+                android:id="@+id/et_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mobile number"
+                android:inputType="phone"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/offWhite"/>
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email Id"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/offWhite"/>
+
+            <EditText
+                android:id="@+id/et_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date of Birth"
+                android:inputType="date"
+                android:layout_marginBottom="16dp"
+                android:drawableEnd="@drawable/ic_calendar"
+                android:textColor="@color/white"
+                android:textColorHint="@color/offWhite"/>
+        </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/form_container"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_orange"
+        android:text="Next"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+
+    </RelativeLayout>
