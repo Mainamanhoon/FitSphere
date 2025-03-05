@@ -53,5 +53,6 @@ class AccountServiceImpl @Inject constructor (
 
     override  fun signOut() {
         firebaseAuth.signOut()
+
     }
 }

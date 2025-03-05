@@ -9,30 +9,8 @@ data class Workout(
     var picPath:String? = null,
     var kcal:Int? = null,
     var durationAll:String? = null,
-    var tutorials: List<Tutorial> = emptyList()
-):Serializable {
+    var tutorials: List<String> = emptyList()
+ ):Serializable {
 
-
-//    fun getTittle(): String{
-//        return title
-//    }
-//    fun getDescription(): String{
-//        return description
-//    }
-//    fun getPicPath(): String {
-//       return picPath
-//    }
-//
-//    fun getLessons(): ArrayList<Tutorial> {
-//       return tutorials
-//    }
-//
-//    fun getKcal(): Int {
-//        return kcal
-//    }
-//
-//    fun getDurationAll(): String {
-//        return durationAll
-//    }
 
 }

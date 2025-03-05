@@ -19,10 +19,12 @@ import com.example.fitsphere.data.service.Resource
 import com.example.fitsphere.databinding.ActivityMainBinding
 import com.example.fitsphere.model.Workout
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+
+ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     lateinit var loader: Loader

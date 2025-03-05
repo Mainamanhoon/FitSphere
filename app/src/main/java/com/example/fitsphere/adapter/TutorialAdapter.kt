@@ -30,12 +30,9 @@ class TutorialAdapter(val tutorials:List<Tutorial>):RecyclerView.Adapter<Tutoria
         holder.title.text = tutorial.title
         holder.duration.text = tutorial.duration.toString()
 
-        val resId = holder.itemView.context.resources.getIdentifier(
-            tutorial.picPath, "drawable", holder.itemView.context.packageName
-        )
 
         Glide.with(holder.itemView.context)
-            .load(resId).
+            .load(tutorial.picPath).
             into(holder.imageView)
 
         holder.binding.root.setOnClickListener{

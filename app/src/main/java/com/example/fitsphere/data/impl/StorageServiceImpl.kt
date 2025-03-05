@@ -4,6 +4,7 @@ import com.example.fitsphere.data.service.StorageService
 import com.example.fitsphere.utils.await
 import com.example.fitsphere.data.service.Resource
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import javax.inject.Inject
@@ -49,6 +50,24 @@ class StorageServiceImpl @Inject constructor(
             e.printStackTrace()
             Resource.Failure(e)
         }
+    }
+
+    override suspend fun fetchListOfDoc(
+        collectionId: String,
+        docList: List<String>
+    ): Resource<List<DocumentSnapshot>> {
+         return try {
+             val docRef = db.collection(collectionId).whereIn(FieldPath.documentId(),docList)
+             val result = docRef.get().await()
+             if(result.isEmpty){
+                 Resource.Failure(Exception("No Document Found"))
+             }else{
+                 Resource.Success(result.documents)
+             }
+         }catch (e:Exception){
+             e.printStackTrace()
+             Resource.Failure(e)
+         }
     }
 
 }

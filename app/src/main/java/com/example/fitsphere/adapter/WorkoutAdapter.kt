@@ -38,13 +38,11 @@ class WorkoutAdapter(var items : List<Workout>)
     override fun onBindViewHolder(holder: WorkoutAdapter.ViewHolder, position: Int) {
         val workout = items[position]
         holder.title.text = workout.title
-        val resId = holder.itemView.context.resources.getIdentifier(
-            workout.picPath, "drawable", holder.itemView.context.packageName
-        )
+
         Glide.with(holder.itemView.context)
-            .load(resId)
+            .load(workout.picPath)
             .into(holder.imageView)
-        holder.exercise.text = "${workout.tutorials.size} Exercise"
+        holder.exercise.text = "${workout.tutorials.size} Exercises"
         holder.kcal.text = "${workout.kcal} Kcal"
         holder.duration.text = workout.durationAll
 

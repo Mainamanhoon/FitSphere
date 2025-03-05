@@ -4,6 +4,8 @@ plugins {
     id("com.google.gms.google-services")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+//    id("com.google.devtools.ksp")
+
 
 }
 
@@ -64,8 +66,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 
-    // Glide for image loading
+    // Glide for image loading and caching
     implementation(libs.glide)
+
 
     // Firebase dependencies managed by BoM
     implementation(platform(libs.firebase.bom.v3370))
@@ -97,6 +100,9 @@ dependencies {
 
     //for coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
+}
+kapt {
+    correctErrorTypes = true
 }
