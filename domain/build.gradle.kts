@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.domain"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
@@ -55,8 +55,12 @@ dependencies {
     implementation ("com.google.firebase:firebase-storage-ktx")
 
     // Hilt dependencies
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.51.1") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
 
     // Firebase dependencies managed by BoM
     implementation(platform(libs.firebase.bom.v3370))

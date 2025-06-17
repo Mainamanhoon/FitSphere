@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.data"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
@@ -47,12 +47,11 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.room.common.jvm)
     implementation(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.runtime)
+//    implementation(libs.androidx.room.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.10")
 
     // Firebase dependencies managed by BoM
     implementation(platform(libs.firebase.bom.v3370))
@@ -68,8 +67,12 @@ dependencies {
     implementation ("com.google.firebase:firebase-storage-ktx")
 
     // Hilt dependencies
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.51.1") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
 
     implementation("com.google.android.gms:play-services-fitness:21.2.0")
     implementation("com.google.android.gms:play-services-auth:21.3.0")

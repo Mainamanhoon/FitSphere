@@ -40,11 +40,14 @@ android {
         viewBinding = true
     }
 
+    lint {
+        disable += "NullSafeMutableLiveData"
+    }
+
     kotlinOptions {
         jvmTarget = "11"
     }
 }
-
 dependencies {
 
     implementation(project(":data"))
@@ -68,9 +71,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Lifecycle components
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7") // Stable version
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.1") // Stable version
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.1")
 
     // Glide for image loading and caching
     implementation(libs.glide)
@@ -90,8 +93,12 @@ dependencies {
     implementation ("com.google.firebase:firebase-storage-ktx")
 
     // Hilt dependencies
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.51.1") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
 
 
     // Hilt navigation for Compose
@@ -103,13 +110,18 @@ dependencies {
     //for circular imageViews
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
-    //for coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     implementation("androidx.health.connect:connect-client:1.1.0-beta01")
 
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+
+//     Clean Architecture Dependencies
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3") {
+        exclude(group = "com.intellij", module = "annotations")
+    }
 
 
 

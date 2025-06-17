@@ -19,7 +19,7 @@ class AccountServiceImpl @Inject constructor (
         get() = firebaseAuth.currentUser
 
     override val currentUserId: String
-        get() = firebaseAuth.currentUser?.uid.orEmpty()
+        get() = firebaseAuth.currentUser?.uid?:""
 
     override fun hasUser(): Boolean {
         return Firebase.auth.currentUser !=null
@@ -30,7 +30,7 @@ class AccountServiceImpl @Inject constructor (
             val result = firebaseAuth.signInWithEmailAndPassword(email,password).await()
             Resource.Success(result.user!!)
         }catch (e:Exception){
-            e.printStackTrace()
+//            e.printStackTrace()
             Resource.Failure(e)
         }
     }
@@ -46,13 +46,12 @@ class AccountServiceImpl @Inject constructor (
                 ?.await()
             Resource.Success(result.user!!)
         }catch (e:Exception){
-            e.printStackTrace()
+//            e.printStackTrace()
             Resource.Failure(e)
         }
     }
 
     override  fun signOut() {
         firebaseAuth.signOut()
-
     }
 }

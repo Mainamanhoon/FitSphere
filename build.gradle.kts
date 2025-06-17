@@ -8,3 +8,10 @@ plugins {
 //    id("com.google.devtools.ksp") version "2.0.21-1.0.27" apply false
 
 }
+
+// Global configuration to exclude conflicting annotations
+allprojects {
+    configurations.all {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+}
