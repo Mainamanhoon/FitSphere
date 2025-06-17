@@ -7,8 +7,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
+import com.example.common.Resource
 import com.example.fitsphere.Loader
-import com.example.fitsphere.data.service.Resource
 import com.example.fitsphere.databinding.ActivityLoginBinding
 import com.example.fitsphere.screen.main_activity.MainActivity
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException

@@ -3,8 +3,8 @@ package com.example.fitsphere.data
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.fitsphere.data.service.AccountService
-import com.example.fitsphere.data.service.Resource
+import com.example.common.Resource
+import com.example.domain.repository.AccountService
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

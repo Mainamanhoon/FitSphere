@@ -10,11 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.common.Resource
+import com.example.domain.model.User
 import com.example.fitsphere.Loader
-import com.example.fitsphere.data.service.Resource
-import com.example.fitsphere.model.User
-import com.example.fitsphere.screen.login_activity.LoginActivity
 import com.example.fitsphere.databinding.FragmentSignupSecondBinding
+import com.example.fitsphere.screen.login_activity.LoginActivity
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import kotlinx.coroutines.launch

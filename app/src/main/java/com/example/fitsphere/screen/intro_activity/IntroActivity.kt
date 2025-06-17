@@ -2,29 +2,52 @@ package com.example.fitsphere.screen.intro_activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
+import androidx.health.connect.client.HealthConnectClient
+import androidx.health.connect.client.permission.HealthPermission
+import androidx.health.connect.client.records.HeartRateRecord
+import androidx.health.connect.client.records.StepsRecord
+import androidx.health.connect.client.records.TotalCaloriesBurnedRecord
+import androidx.health.connect.client.records.WeightRecord
 import com.example.fitsphere.databinding.ActivityIntroBinding
-import com.example.fitsphere.model.Tutorial
-import com.example.fitsphere.model.Workout
 import com.example.fitsphere.screen.main_activity.MainActivity
 import com.example.fitsphere.screen.signup_activity.SignupActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.google.firebase.firestore.FirebaseFirestore
-import dagger.hilt.android.AndroidEntryPoint
 
 class IntroActivity : AppCompatActivity() {
     private var _binding : ActivityIntroBinding?=null
     private val binding get() = _binding!!
     lateinit var auth :FirebaseAuth
+
+    private lateinit var healthConnectClient: HealthConnectClient
+    private lateinit var requestPermissions: ActivityResultLauncher<Set<String>>
+
+//    private val permissions = setOf(
+//        HealthPermission.getReadPermission(HeartRateRecord::class),
+//        HealthPermission.getWritePermission(HeartRateRecord::class),
+//        HealthPermission.getReadPermission(StepsRecord::class),
+//        HealthPermission.getWritePermission(StepsRecord::class),
+//        HealthPermission.getReadPermission(TotalCaloriesBurnedRecord::class),
+//        HealthPermission.getWritePermission(TotalCaloriesBurnedRecord::class),
+//        HealthPermission.getReadPermission(WeightRecord::class),
+//        HealthPermission.getWritePermission(WeightRecord::class),
+//    )
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityIntroBinding.inflate(layoutInflater)
          setContentView(binding.root)
+
+
         auth = Firebase.auth
-//        pushWorkoutDataOnce()
+
+
+
+
         binding.startButton.setOnClickListener{
             val intent = Intent(this, SignupActivity::class.java)
             val intent2 = Intent(this, MainActivity::class.java)
@@ -36,48 +59,11 @@ class IntroActivity : AppCompatActivity() {
             }
             finish()
         }
+
+
+
     }
 
 
-
-//    fun pushWorkoutDataOnce() {
-//        val firestore = FirebaseFirestore.getInstance()
-//        val workoutCollection = firestore.collection("workouts")
-//
-//        // Create your workout data
-//        val workoutData = Workout(
-//            description = "You just woke up. It is a brand new day. The canvas is blank. How do you begin? Take 21 minutes to cultivate a peaceful mind and strong body.",
-//            durationAll = "65 min",
-//            kcal = 180,
-//            picPath = "pic_3",
-//            title = "Yoga",
-//            tutorials = listOf(
-//                Tutorial(
-//                    duration = "23:00",
-//                    link = "v7AYKMP6rOE",
-//                    picPath = "pic_3_1",
-//                    title = "Lesson 1"
-//                )
-//            )
-//        )
-//
-//        // Check if the collection is empty before adding data
-//        workoutCollection.get().addOnSuccessListener { snapshot ->
-//            if (snapshot.isEmpty) {
-//                // Add the workout data to Firestore
-//                workoutCollection.add(workoutData)
-//                    .addOnSuccessListener {
-//                        Log.d("h1","Workout data added successfully!")
-//                    }
-//                    .addOnFailureListener { exception ->
-//                        println("Error adding workout data: ${exception.message}")
-//                    }
-//            } else {
-//                println("Workout data already exists, not adding again.")
-//            }
-//        }.addOnFailureListener { exception ->
-//            println("Error checking Firestore collection: ${exception.message}")
-//        }
-//    }
 
 }

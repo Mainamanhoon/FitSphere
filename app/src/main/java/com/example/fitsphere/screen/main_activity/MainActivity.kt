@@ -1,25 +1,22 @@
 package com.example.fitsphere.screen.main_activity
 
-import android.app.Activity
-import android.content.ContentValues.TAG
-import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitsphere.adapter.WorkoutAdapter
+import com.example.common.healthConnect.HealthPermissionHelper
+import com.example.common.Resource
+import com.example.domain.model.Workout
 import com.example.fitsphere.Loader
-import com.example.fitsphere.data.service.Resource
+import com.example.fitsphere.adapter.WorkoutAdapter
 import com.example.fitsphere.databinding.ActivityMainBinding
-import com.example.fitsphere.model.Workout
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -27,18 +24,36 @@ import kotlinx.coroutines.launch
  class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
+
     lateinit var loader: Loader
     private val mainActivityViewModel by viewModels<MainActivityViewModel>()
-    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var workoutAdapter: WorkoutAdapter
+    private lateinit var requestPermissions: ActivityResultLauncher<Set<String>>
+    private lateinit var permissionHelper: HealthPermissionHelper
 
 
+
+
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         loader = Loader(this)
         var workoutList: List<Workout> = emptyList()
+
+        permissionHelper = HealthPermissionHelper(this, mainActivityViewModel.healthConnectClient!!)
+        requestPermissions = registerForActivityResult(
+            permissionHelper.createPermissionRequestLauncher()
+        ) { grantedPermissions ->
+            val allGranted = permissionHelper.permissions.containsAll(grantedPermissions)
+            if (allGranted) {
+                Toast.makeText(this, "All health permissions granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Not all health permissions were granted", Toast.LENGTH_LONG).show()
+            }
+        }
 
 
         mainActivityViewModel.getWorkouts()
@@ -47,6 +62,14 @@ import kotlinx.coroutines.launch
         workoutAdapter= WorkoutAdapter(workoutList)
         recyclerView.adapter = workoutAdapter
 
+
+
+
+        lifecycleScope.launch {
+            if(!permissionHelper.isAllPermissionsGranted()){
+                requestPermissions.launch(permissionHelper.permissions)
+            }
+        }
 
         lifecycleScope.launch {
            mainActivityViewModel.dataState.collect{state->
@@ -68,8 +91,6 @@ import kotlinx.coroutines.launch
 
            }
         }
-
-
         setupUI()
 
 
@@ -77,27 +98,6 @@ import kotlinx.coroutines.launch
 
     private fun setupUI() {
         mainActivityViewModel.currentUser?.displayName?.let { binding.userNameText.text = it }
-
-        activityResultLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val intent: Intent? = result.data
-                val imageUri = intent?.data
-                if (imageUri != null) {
-                    binding.profilePicIv.setImageURI(imageUri)
-                } else {
-                    Toast.makeText(this, "No image Selected", Toast.LENGTH_LONG).show()
-                }
-            }
-
-        }
-
-        binding.profilePicIv.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            activityResultLauncher.launch(intent)
-        }
-
     }
+
 }

@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.fitsphere"
-        minSdk = 23
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -47,6 +47,10 @@ android {
 
 dependencies {
 
+    implementation(project(":data"))
+    implementation(project(":common"))
+    implementation(project(":domain"))
+
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -55,6 +59,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.play.services.fitness)
+    implementation(libs.play.services.auth)
 
     // Testing dependencies
     testImplementation(libs.junit)
@@ -75,6 +81,14 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
 
+    //firestore
+    implementation ("com.google.firebase:firebase-firestore:25.1.1")
+    implementation ("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-analytics")
+
+    implementation ("com.google.firebase:firebase-firestore-ktx")
+    implementation ("com.google.firebase:firebase-storage-ktx")
+
     // Hilt dependencies
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
@@ -86,21 +100,18 @@ dependencies {
     //Custom Loader
     implementation ("com.airbnb.android:lottie:3.4.2")
 
-    //firestore
-    implementation ("com.google.firebase:firebase-firestore:25.1.1")
-    implementation ("com.google.firebase:firebase-analytics-ktx")
-    implementation("com.google.firebase:firebase-analytics")
-
-    implementation ("com.google.firebase:firebase-firestore-ktx")
-    implementation ("com.google.firebase:firebase-storage-ktx")
-
-
     //for circular imageViews
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
     //for coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    implementation("androidx.health.connect:connect-client:1.1.0-beta01")
+
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+
+
 
 }
 kapt {

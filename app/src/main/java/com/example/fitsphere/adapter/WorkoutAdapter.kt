@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fitsphere.screen.workout_activity.WorkoutActivity
 import com.example.fitsphere.R
-import com.example.fitsphere.model.Workout
+import com.example.domain.model.Workout
 
 class WorkoutAdapter(var items : List<Workout>)
     : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>(){

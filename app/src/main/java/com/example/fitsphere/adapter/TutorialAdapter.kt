@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.fitsphere.model.Tutorial
+import com.example.domain.model.Tutorial
 import com.example.fitsphere.databinding.TutorialViewHolderBinding
 
 class TutorialAdapter(val tutorials:List<Tutorial>):RecyclerView.Adapter<TutorialAdapter.ViewHolder>() {

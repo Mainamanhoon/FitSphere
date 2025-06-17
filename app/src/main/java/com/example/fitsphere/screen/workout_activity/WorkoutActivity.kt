@@ -5,20 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.common.Resource
+import com.example.domain.model.Tutorial
+import com.example.domain.model.Workout
 import com.example.fitsphere.adapter.TutorialAdapter
-import com.example.fitsphere.data.service.Resource
 import com.example.fitsphere.databinding.ActivityWorkoutBinding
-import com.example.fitsphere.model.Tutorial
-import com.example.fitsphere.model.Workout
-import com.example.fitsphere.screen.main_activity.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
