@@ -24,7 +24,6 @@ import androidx.work.WorkManager
 import com.example.common.healthConnect.HealthConnectAvailability
 import com.example.common.healthConnect.HealthPermissionHelper
 import com.example.data.model.ExerciseSessionData
-import com.example.data.worker.ReadStepWorker
 import com.example.domain.repository.ChangesMessage
 import com.example.domain.repository.HealthService
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -240,10 +239,10 @@ class HealthServiceImpl @Inject constructor(@ApplicationContext private val cont
         return healthConnectClient.readRecords(request).records
     }
     fun enqueueReadStepWorker(){
-        val readRequest = OneTimeWorkRequestBuilder<ReadStepWorker>()
-            .setInitialDelay(10, TimeUnit.SECONDS)
-            .build()
-        WorkManager.getInstance(context).enqueue(readRequest)
+//        val readRequest = OneTimeWorkRequestBuilder<ReadStepWorker>()
+//            .setInitialDelay(10, TimeUnit.SECONDS)
+//            .build()
+//        WorkManager.getInstance(context).enqueue(readRequest)
     }
 
     fun requestPermissionsActivityContract(): ActivityResultContract<Set<String>, Set<String>> {

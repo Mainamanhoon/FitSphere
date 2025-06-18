@@ -113,7 +113,7 @@ dependencies {
 
     implementation("androidx.health.connect:connect-client:1.1.0-beta01")
 
-    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
 //     Clean Architecture Dependencies
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3") {

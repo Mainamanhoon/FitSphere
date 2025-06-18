@@ -1,13 +1,17 @@
 package com.example.data.di
 
 import android.content.Context
-import androidx.health.connect.client.HealthConnectClient
+import androidx.room.Room
 import com.example.data.repository.AccountServiceImpl
 import com.example.data.repository.HealthServiceImpl
 import com.example.data.repository.StorageServiceImpl
+import com.example.data.repository.youtubePlayerRepositoryImpl
+import com.example.data.room.VideoProgressDatabase
+import com.example.data.room.VideoProgressDao
 import com.example.domain.repository.AccountService
 import com.example.domain.repository.HealthService
 import com.example.domain.repository.StorageService
+import com.example.domain.repository.youtubePlayerRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
@@ -44,6 +48,22 @@ object DataModule {
     @Provides
     @Singleton
     fun provideHealthService(impl:HealthServiceImpl):HealthService{
+        return impl
+    }
+
+    @Provides
+    @Singleton
+    fun providesProgressDatabase(@ApplicationContext context: Context):VideoProgressDatabase{
+        return Room.databaseBuilder(context,VideoProgressDatabase::class.java,"progress_database").build()
+    }
+    @Provides
+    @Singleton
+    fun providesProgressDao(database: VideoProgressDatabase):VideoProgressDao{
+        return database.getVideoProgressDao()
+    }
+
+    @Provides
+    fun providesYoutubePLayerRepository(impl:youtubePlayerRepositoryImpl): youtubePlayerRepository{
         return impl
     }
 

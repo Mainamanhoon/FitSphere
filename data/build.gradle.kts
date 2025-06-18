@@ -46,8 +46,9 @@ dependencies {
     implementation(libs.firebase.common.ktx)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.room.common.jvm)
-    implementation(libs.androidx.room.compiler)
-//    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.runtime.android)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -57,13 +58,13 @@ dependencies {
     implementation(platform(libs.firebase.bom.v3370))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
-
+    implementation ("com.google.firebase:firebase-firestore-ktx")
     //firestore
     implementation ("com.google.firebase:firebase-firestore:25.1.1")
     implementation ("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-analytics")
 
-    implementation ("com.google.firebase:firebase-firestore-ktx")
+
     implementation ("com.google.firebase:firebase-storage-ktx")
 
     // Hilt dependencies
@@ -78,7 +79,10 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.3.0")
 
     implementation("androidx.health.connect:connect-client:1.1.0-beta01")
-    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
 
+}
+kapt {
+    correctErrorTypes = true
 }

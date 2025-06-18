@@ -24,6 +24,8 @@ roomRuntime = "2.7.1"
 workRuntimeKtx = "2.10.0"
 roomCommonJvm = "2.7.1"
 roomCompiler = "2.7.1"
+roomRuntimeAndroid = "2.7.1"
+roomRuntimeJvm = "2.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,6 +52,8 @@ play-services-auth = { group = "com.google.android.gms", name = "play-services-a
 androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "workRuntimeKtx" }
 androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+androidx-room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
+androidx-room-runtime-jvm = { group = "androidx.room", name = "room-runtime-jvm", version.ref = "roomRuntimeJvm" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

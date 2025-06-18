@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.common.Constant.EXTRA_WORKOUT
 import com.example.fitsphere.screen.workout_activity.WorkoutActivity
 import com.example.fitsphere.R
 import com.example.domain.model.Workout
@@ -48,7 +49,7 @@ class WorkoutAdapter(var items : List<Workout>)
 
         holder.itemView.setOnClickListener{
             val intent = Intent(context, WorkoutActivity::class.java)
-            intent.putExtra("object",workout)
+            intent.putExtra(EXTRA_WORKOUT,workout)
             context.startActivity(intent)
         }
     }

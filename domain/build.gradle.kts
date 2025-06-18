@@ -68,7 +68,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
 
     implementation("androidx.health.connect:connect-client:1.1.0-beta01")
-    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
 
 }

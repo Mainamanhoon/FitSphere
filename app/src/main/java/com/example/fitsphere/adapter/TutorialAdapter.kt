@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.common.Constant.EXTRA_TUTORIAL
 import com.example.domain.model.Tutorial
 import com.example.fitsphere.databinding.TutorialViewHolderBinding
+import com.example.fitsphere.screen.videoplayer_activity.VideoPlayerActivity
 
 class TutorialAdapter(val tutorials:List<Tutorial>):RecyclerView.Adapter<TutorialAdapter.ViewHolder>() {
     lateinit var context: Context
@@ -36,14 +38,18 @@ class TutorialAdapter(val tutorials:List<Tutorial>):RecyclerView.Adapter<Tutoria
             into(holder.imageView)
 
         holder.binding.root.setOnClickListener{
-            val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:${tutorial.link}"))
-            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watc?v=${tutorial.link}"))
+            val intent = Intent(context, VideoPlayerActivity::class.java)
+            intent.putExtra(EXTRA_TUTORIAL, tutorial)
+            context.startActivity(intent)
 
-            try{
-                context.startActivity(appIntent)
-            }catch(e:ActivityNotFoundException){
-                context.startActivity(webIntent)
-            }
+//            val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:${tutorial.link}"))
+//            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watc?v=${tutorial.link}"))
+//
+//            try{
+//                context.startActivity(appIntent)
+//            }catch(e:ActivityNotFoundException){
+//                context.startActivity(webIntent)
+//            }
         }
 
     }

@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.common.Constant.EXTRA_WORKOUT
 import com.example.common.Resource
 import com.example.domain.model.Tutorial
 import com.example.domain.model.Workout
@@ -34,7 +35,7 @@ import kotlinx.coroutines.launch
         _binding = ActivityWorkoutBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-        workout = intent.getSerializableExtra("object") as Workout;
+        workout = intent.getSerializableExtra(EXTRA_WORKOUT) as Workout;
 
 //        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
          setVariables()
@@ -75,7 +76,6 @@ import kotlinx.coroutines.launch
         binding.descriptionTxt.text = workout.description
 
          recyclerView  = binding.view3
-//
         recyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
 
     }
